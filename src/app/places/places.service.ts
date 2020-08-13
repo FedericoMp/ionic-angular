@@ -9,8 +9,8 @@ export class PlacesService {
   private _places: Place[] = [
     new Place(
       'p1',
-      'SFO - City & Pier',
-      'In the center of San Francisco',
+      'Painted Ladys Hotel',
+      'In the bay of San Francisco, near the pier',
       'https://www.viajarsanfrancisco.com/img/que-visitar-en-san-francisco.jpg',
       249.99
     ),
@@ -30,13 +30,45 @@ export class PlacesService {
     )
   ];
 
+  private _offers: Place[] = [
+    new Place(
+      'p4',
+      'Stockholm City',
+      'In the heart of Sweden',
+      'https://www.telegraph.co.uk/content/dam/Travel/2019/January/Old-Town-Stockholm-iStock-497344880.jpg',
+      200.99
+    ),
+    new Place(
+      'p5',
+      'Queensland Apart',
+      'Nears the beach of New Zeland',
+      'https://assets.eharmony.com/files/marketing/images/landing/queensland-1024x683.jpg',
+      105.79
+    ),
+    new Place(
+      'p6',
+      'Mendoza',
+      'Adventure in the nature',
+      'https://www.mdzol.com/u/fotografias/m/2020/7/8/f608x342-60380_90103_0.jpg',
+      78.92
+    )
+  ];
+
   public get places(): Place[] {
     return [...this._places];
+  }
+
+  public get offers(): Place[] {
+    return [...this._offers];
   }
 
   constructor() { }
 
   public placeById(placeId: string): Place {
     return [...this._places].filter((p: Place) => p.id === placeId)[0];
+  }
+
+  public offerById(placeId: string): Place {
+    return [...this._offers].filter((p: Place) => p.id === placeId)[0];
   }
 }
