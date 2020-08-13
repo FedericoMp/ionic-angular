@@ -8,18 +8,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
+  <ion-grid class="ion-no-padding">
     <ion-row>
-      <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
+      <ion-col class="ion-no-padding" size="12" size-sm="8" offset-sm="2">
+        <ion-img [src]="loadOffer.imageUrl"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12" size-sm="8" offset-sm="2">
         <ion-card>
-          <ion-img [src]="loadOffer.imageUrl"></ion-img>
+          <ion-card-header>
+            <ion-card-title>Place details:</ion-card-title>
+          </ion-card-header>
           <ion-card-content>
-            <p>{{ loadOffer.price | currency }} / Nigth</p>
+            <p>{{ loadOffer.price | currency }} / night</p>
             <p>{{ loadOffer.description }}</p>
           </ion-card-content>
-          <ion-button color="success" expand="block" class="ion-margin" (click)="onBookPlace()">
-            <ion-icon name="heart-circle-outline" slot="start"></ion-icon>
-            Book place
+          <ion-button color="dark" expand="block" class="ion-margin"
+            [routerLink]="['/','places','tabs','offers','edit',loadOffer.id]">
+            <ion-icon name="create-outline" slot="start"></ion-icon>
+            Edit offer
           </ion-button>
         </ion-card>
       </ion-col>

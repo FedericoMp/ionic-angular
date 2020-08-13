@@ -65,10 +65,10 @@ export class PlacesService {
   constructor() { }
 
   public placeById(placeId: string): Place {
-    return [...this._places].filter((p: Place) => p.id === placeId)[0];
+    return { ...this._places.find(p => p.id === placeId) };
   }
 
   public offerById(placeId: string): Place {
-    return [...this._offers].filter((p: Place) => p.id === placeId)[0];
+    return { ...this._offers.find(o => o.id === placeId) };
   }
 }

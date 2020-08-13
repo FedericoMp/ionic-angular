@@ -27,7 +27,4 @@ export class OfferBookingsPage implements OnInit {
     });
   }
 
-  public onBookPlace() {
-    this.navCtrl.navigateBack('/places/tabs/offers');
-  }
 }
