@@ -15,19 +15,19 @@ export class PlaceDetailPage implements OnInit {
 
   constructor(
     private placesSvc: PlacesService,
-    private navCrtl: NavController,
+    private navCtrl: NavController,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(p => {
       (p.has('placeId'))
         ? this.loadPlace = this.placesSvc.placeById(p.get('placeId'))
-        : this.navCrtl.navigateBack('/places/tabs/discover');
+        : this.navCtrl.navigateBack('/places/tabs/discover');
     })
   }
 
   public onBookPlace() {
-    this.navCrtl.navigateBack('/places/tabs/discover');
+    this.navCtrl.navigateBack('/places/tabs/discover');
   }
 
 }
