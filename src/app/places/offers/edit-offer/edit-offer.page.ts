@@ -16,7 +16,7 @@ export class EditOfferPage implements OnInit {
   constructor(
     private placesSvc: PlacesService,
     private navCtrl: NavController,
-    private alertCrl: AlertController,
+    private alertCtrl: AlertController,
     private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class EditOfferPage implements OnInit {
   }
 
   public async cancelEdit() {
-    const alert = await this.alertCrl.create({
+    const alert = await this.alertCtrl.create({
       header: 'Confirm',
       message: 'Do you want to go out without save cahnges?',
       buttons: [
