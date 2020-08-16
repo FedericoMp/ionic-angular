@@ -20,8 +20,8 @@ export class OffersPage implements OnInit {
     this.loadedOffers = this.placesSvc.offers;
   }
 
-  public goToEdit(placeId: string, elRef: IonItemSliding) {
-    elRef.close();
+  public goToEdit(placeId: string, ionItemOffer: IonItemSliding) {
+    ionItemOffer.close();
     this.navCtrl.navigateForward(`/places/tabs/offers/edit/${placeId}`);
   }
 
