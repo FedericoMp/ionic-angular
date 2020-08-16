@@ -24,11 +24,6 @@
             <p>{{ loadOffer.price | currency }} / night</p>
             <p>{{ loadOffer.description }}</p>
           </ion-card-content>
-          <ion-button color="dark" expand="block" class="ion-margin"
-            [routerLink]="['/','places','tabs','offers','edit',loadOffer.id]">
-            <ion-icon name="create-outline" slot="start"></ion-icon>
-            Edit offer
-          </ion-button>
         </ion-card>
       </ion-col>
     </ion-row>

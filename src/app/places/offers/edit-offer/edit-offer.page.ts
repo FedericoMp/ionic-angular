@@ -39,7 +39,7 @@ export class EditOfferPage implements OnInit {
         {
           text: 'Okay',
           handler: () => {
-            this.navCtrl.navigateBack(`/places/tabs/offers/${this.loadOffer.id}`);
+            this.navCtrl.navigateBack(`/places/tabs/offers`);
           }
         }
       ]
