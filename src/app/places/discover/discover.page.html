@@ -7,30 +7,34 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content class="ion-padding">
-  <ion-grid>
-    <ion-row>
+<ion-content>
+  <ion-segment (ionChange)="segmentChanged($event)" value="all" color="dark">
+    <ion-segment-button value="all">All Places</ion-segment-button>
+    <ion-segment-button value="bookable">Bookeable</ion-segment-button>
+  </ion-segment>
+  <ion-grid class="ion-padding">
+    <ion-row *ngIf="!toogleSegment">
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
-        <ion-card>
+        <ion-card *ngFor="let place of loadedPlaces">
           <ion-card-header>
-            <ion-card-title class="ion-margin-bottom">{{ loadedPlaces[0].title }}</ion-card-title>
-            <ion-card-subheader>{{ loadedPlaces[0].price | currency }} / night</ion-card-subheader>
+            <ion-card-title class="ion-margin-bottom">{{ place.title }}</ion-card-title>
+            <ion-card-subheader>{{ place.price | currency }} / night</ion-card-subheader>
           </ion-card-header>
-          <ion-img [src]="loadedPlaces[0].imageUrl"></ion-img>
+          <ion-img [src]="place.imageUrl"></ion-img>
           <ion-card-content>
-            <p>{{ loadedPlaces[0].description }}</p>
+            <p>{{ place.description }}</p>
           </ion-card-content>
           <ion-button color="dark" expand="block" class="ion-margin"
-            [routerLink]="['/', 'places', 'tabs', 'discover', loadedPlaces[0].id]">
+            [routerLink]="['/', 'places', 'tabs', 'discover', place.id]">
             More info
           </ion-button>
         </ion-card>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="toogleSegment">
       <ion-col size="12" size-sm="8" offset-sm="2" class="ion-text-center">
         <ion-list>
-          <ion-item *ngFor="let place of loadedPlaces | slice:1" detail
+          <ion-item *ngFor="let place of loadedPlaces" detail
             [routerLink]="['/', 'places', 'tabs', 'discover', place.id]">
             <ion-thumbnail slot="start">
               <ion-img [src]="place.imageUrl"></ion-img>
