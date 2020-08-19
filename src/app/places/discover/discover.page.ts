@@ -19,7 +19,7 @@ export class DiscoverPage implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.loadedPlaces = this.placesSvc.places;
-    }, 5000);
+    }, 1500);
   }
 
   public segmentChanged(event: CustomEvent<SegmentChangeEventDetail>) {

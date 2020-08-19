@@ -10,6 +10,25 @@ import { Place } from '../../places/place.model';
 export class CreateBookingComponent implements OnInit {
 
   @Input() selectedPlace: Place;
+  @Input() mode: 'select' | 'random';
+
+  public get chipLabel(): string {
+    switch (this.mode) {
+      case 'select':
+        return 'selected-date';
+      case 'random':
+        return 'random-date';
+    }
+  }
+
+  public get chipColor(): string {
+    switch (this.mode) {
+      case 'select':
+        return 'success';
+      case 'random':
+        return 'warning';
+    }
+  }
 
   constructor(
     private modalCtrl: ModalController

@@ -20,6 +20,9 @@
           <ion-label>
             <p>{{ selectedPlace.description }}</p>
             <p>{{ selectedPlace.price | currency }} / night</p>
+            <ion-chip [color]="chipColor">
+              <ion-label [color]="chipColor">{{ chipLabel }}</ion-label>
+            </ion-chip>
           </ion-label>
         </ion-item>
         <ion-button color="success" expand="block" class="ion-margin" (click)="onBookPlace()">
