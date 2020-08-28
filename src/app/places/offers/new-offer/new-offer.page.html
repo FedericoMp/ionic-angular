@@ -4,7 +4,7 @@
       <ion-back-button defaultHref="/places/tabs/offers"></ion-back-button>
     </ion-buttons>
     <ion-title>Add new offer</ion-title>
-    <ion-buttons slot="primary">
+    <ion-buttons slot="primary" *ngIf="newOfferForm.valid">
       <ion-button (click)="onCreateOffer()">
         <ion-icon name="checkmark" slot="icon-only"></ion-icon>
       </ion-button>
@@ -13,44 +13,74 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col size-sm="6" offset-sm="3">
-        <ion-item>
-          <ion-label position="floating">Title</ion-label>
-          <ion-input tpe="text" autocomplete autocorrect></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size-sm="6" offset-sm="3">
-        <ion-item>
-          <ion-label position="floating">Description</ion-label>
-          <ion-textarea row="3"></ion-textarea>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size-sm="6" offset-sm="3">
-        <ion-item>
-          <ion-label position="floating">Price</ion-label>
-          <ion-input type="number"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size-sm="3" offset-sm="3">
-        <ion-item>
-          <ion-label position="floating">Available from</ion-label>
-          <ion-datetime min="2020-01-01" max="2025-12-31"></ion-datetime>
-        </ion-item>
-      </ion-col>
-      <ion-col size-sm="3">
-        <ion-item>
-          <ion-label position="floating">Available to</ion-label>
-          <ion-datetime min="2020-01-02" max="2025-12-31"></ion-datetime>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+  <form [formGroup]="newOfferForm">
+    <ion-grid>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Title</ion-label>
+            <ion-input type="text" formControlName="title"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!title.valid && title.touched" lines="none">
+            <ion-note color="danger" class="ion-margin-top">
+              Should be a valid title.
+            </ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-textarea row="5" formControlName="description" [maxlength]="descMaxLen" autoGrow autocapitalize></ion-textarea>
+          </ion-item>
+          <ion-item lines="none">
+            <ion-note *ngIf="!description.valid && description.touched"  slot="start" color="danger">
+              Should be a valid description.
+            </ion-note>
+            <ion-note slot="end">
+              {{ (!description?.value?.length) ? 0 : description?.value?.length }} / {{ descMaxLen }}
+            </ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="6" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Price</ion-label>
+            <ion-input type="number" formControlName="price"></ion-input>
+          </ion-item>
+          <ion-item *ngIf="!price.valid && price.touched" lines="none">
+            <ion-note color="danger" class="ion-margin-top">
+              Should be a valid price.
+            </ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size-sm="3" offset-sm="3">
+          <ion-item>
+            <ion-label position="floating">Available from</ion-label>
+            <ion-datetime min="2020-01-01" max="2025-12-31" formControlName="dateFrom"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="!dateFrom.valid && dateFrom.touched" lines="none">
+            <ion-note color="danger" class="ion-margin-top">
+              Please select date from.
+            </ion-note>
+          </ion-item>
+        </ion-col>
+        <ion-col size-sm="3">
+          <ion-item>
+            <ion-label position="floating">Available to</ion-label>
+            <ion-datetime min="2020-01-02" max="2025-12-31" formControlName="dateTo"></ion-datetime>
+          </ion-item>
+          <ion-item *ngIf="!dateTo.valid && dateTo.touched" lines="none">
+            <ion-note color="danger" class="ion-margin-top">
+              Please select date to.
+            </ion-note>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
 </ion-content>

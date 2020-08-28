@@ -24,3 +24,12 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+// ion-label focus color default
+.item-has-focus .label-floating.sc-ion-label-md-h  {
+    color: var(--ion-color-dark);
+}
+// ion-label invalid touched color danger
+.ion-invalid.ion-touched ion-label {
+    color: var(--ion-color-danger);
+}
