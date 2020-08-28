@@ -24,7 +24,7 @@
           <ion-card>
             <ion-card-header>
               <ion-card-title class="ion-margin-bottom">{{ loadedPlaces[0]?.title }}</ion-card-title>
-              <ion-card-subheader>{{ loadedPlaces[0]?.price | currency }} / night</ion-card-subheader>
+              <ion-card-subtitle>{{ loadedPlaces[0]?.price | currency }} / night</ion-card-subtitle>
             </ion-card-header>
             <ion-img [src]="loadedPlaces[0]?.imageUrl"></ion-img>
             <ion-card-content>

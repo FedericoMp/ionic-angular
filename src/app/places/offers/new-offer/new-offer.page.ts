@@ -12,4 +12,8 @@ export class NewOfferPage implements OnInit {
   ngOnInit() {
   }
 
+  public onCreateOffer() {
+    console.log('Offer created');
+  }
+
 }
